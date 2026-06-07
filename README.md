@@ -25,7 +25,7 @@ It is independent from the existing project code.
 ```bash
 cd landing_page_match/backend
 python -m venv .venv
-.venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 python app.py
 ```
@@ -49,7 +49,7 @@ It uses the core landing tables: `users`, `clubs`, `club_board`, `club_promotion
 
 1. Run `backend/schema_mysql.sql`.
 
-This file contains table creation and `test_csv`-based seed data for landing_page_match.
+This file creates tables and inserts sample seed data with SQL `INSERT` statements.
 
 ```sql
 source landing_page_match/backend/schema_mysql.sql;
@@ -57,7 +57,14 @@ source landing_page_match/backend/schema_mysql.sql;
 
 Submission setting: database name is `test`.
 
-2. Configure DB connection with these env vars in `backend/.env`:
+2. Create `backend/.env` from `backend/.env.example`, then update values if needed.
+
+```bash
+cd landing_page_match/backend
+copy .env.example .env
+```
+
+3. Configure DB connection in `backend/.env`:
 
 ```text
 DB_USER=root
