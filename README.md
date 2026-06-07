@@ -47,13 +47,16 @@ Frontend runs on `http://localhost:5173` and calls backend API on port `5002`.
 This standalone version is configured for MySQL only.
 It uses the core landing tables: `users`, `clubs`, `club_board`, `club_promotion`.
 
-1. Run `backend/schema_mysql.sql`.
+1. Open MySQL client and run the schema script.
 
-This file creates tables and inserts sample seed data with SQL `INSERT` statements.
-
-```sql
+```bash
+mysql -u root -p
 source landing_page_match/backend/schema_mysql.sql;
 ```
+
+`schema_mysql.sql` includes `CREATE DATABASE IF NOT EXISTS test`, so DB/table creation and seed insert are processed together.
+
+This file creates tables and inserts sample seed data with SQL `INSERT` statements.
 
 Submission setting: database name is `test`.
 
@@ -65,6 +68,8 @@ copy .env.example .env
 ```
 
 3. Configure DB connection in `backend/.env`:
+
+Set `DB_PASSWORD` to your actual MySQL password before running the backend.
 
 ```text
 DB_USER=root
